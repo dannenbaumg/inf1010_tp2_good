@@ -1,0 +1,16 @@
+﻿  main.cpp
+  Menu.cpp
+y:\documents\inf1010\inf1010\tp2\inf1010_tp2\menu.cpp(29): warning C4018: '<' : incompatibilité signed/unsigned
+y:\documents\inf1010\inf1010\tp2\inf1010_tp2\menu.cpp(58): warning C4018: '<' : incompatibilité signed/unsigned
+y:\documents\inf1010\inf1010\tp2\inf1010_tp2\menu.cpp(182): warning C4018: '<' : incompatibilité signed/unsigned
+  Plat.cpp
+  Restaurant.cpp
+y:\documents\inf1010\inf1010\tp2\inf1010_tp2\restaurant.cpp(44): warning C4018: '<' : incompatibilité signed/unsigned
+y:\documents\inf1010\inf1010\tp2\inf1010_tp2\restaurant.cpp(106): warning C4018: '<' : incompatibilité signed/unsigned
+y:\documents\inf1010\inf1010\tp2\inf1010_tp2\restaurant.cpp(122): warning C4018: '<' : incompatibilité signed/unsigned
+y:\documents\inf1010\inf1010\tp2\inf1010_tp2\restaurant.cpp(146): warning C4018: '<' : incompatibilité signed/unsigned
+y:\documents\inf1010\inf1010\tp2\inf1010_tp2\restaurant.cpp(218): warning C4018: '<' : incompatibilité signed/unsigned
+  Table.cpp
+  Génération de code en cours...
+y:\documents\inf1010\inf1010\tp2\inf1010_tp2\menu.cpp(64): warning C4715: 'operator<<' : les chemins de contrôle ne retournent pas tous une valeur
+  tp2.vcxproj -> Y:\Documents\INF1010\inf1010\tp2\INF1010_TP2\tp2\Debug\tp2.exe
