@@ -8,14 +8,16 @@
 
 //constructeurs
 Table::Table() {
-	vector <Plat*> commande_(0);
+	
+
 	id_ = -1;
 	nbPlaces_ = 1;
 	nbClientsATable_ = 0;
 }
 
 Table::Table(int id, int nbPlaces) {
-	vector <Plat*> commande_(0);
+	
+
 	id_ = id;
 	nbPlaces_ = nbPlaces;
 	nbClientsATable_ = 0;
@@ -23,6 +25,9 @@ Table::Table(int id, int nbPlaces) {
 
 //destructeur
 Table::~Table() {
+	for (int i = 0; i < commande_.size(); i++) {
+		delete commande_[i];
+	}
 }
 
 //getters
@@ -57,8 +62,8 @@ void Table::setId(int id) {
 void Table::libererTable() {
 	nbPlaces_ += nbClientsATable_;
 	nbClientsATable_ = 0;
-	//A MODIFIER
 	for (unsigned int i = 0; i < commande_.size(); i++) {
+		delete commande_.back();
 		commande_.pop_back();
 	}
 	
@@ -67,12 +72,14 @@ void Table::libererTable() {
 void Table::placerClient(int nbClients) {
 	nbClientsATable_ = nbClients;
 	nbPlaces_ -= nbClients;
+
 }
 
 //autres methodes
 void Table::commander(Plat* plat) {
-	// A MODIFIER
-	commande_.push_back(plat);
+
+	commande_.push_back(new Plat(*plat));
+	
 }
 
 double Table::getChiffreAffaire() const {
@@ -86,14 +93,14 @@ double Table::getChiffreAffaire() const {
 //affichage
 ostream & operator<<(ostream & fichier, const Table & table)
 {
-	return fichier << "La table numero " << table.id_;
+ fichier << "La table numero " << table.id_;
 	if (table.estOccupee()) {
 		fichier << " est occupee. ";
-		if (table.getNbPlaces() != 0) {
+		if (table.commande_.size() > 0) {
 			fichier << "Voici la commande passee par les clients : " << endl;
 			for (unsigned int i = 0; i < table.commande_.size(); i++) {
 
-				fichier << table.commande_[i];
+				fichier << *table.commande_[i];
 			}
 		}
 		else
@@ -102,5 +109,6 @@ ostream & operator<<(ostream & fichier, const Table & table)
 	else {
 		fichier << " est libre. " << endl;
 	}
-		
+
+	return fichier;
 }

@@ -18,9 +18,6 @@ Restaurant::Restaurant() {
 	menuMidi_ = new Menu("menu.txt", Midi);
 	menuSoir_ = new Menu("menu.txt",  Soir);
 
-	vector<Table*> tables_(0);
-
-
 }
 
 Restaurant::Restaurant(const string& fichier,  const string& nom, TypeMenu moment) {
@@ -34,15 +31,19 @@ Restaurant::Restaurant(const string& fichier,  const string& nom, TypeMenu momen
 	menuMidi_ = new Menu(fichier,  Midi);
 	menuSoir_ = new Menu(fichier,  Soir);
 
-
-	vector<Table*> tables_(0);
-
 	lireTable(fichier);
 }
 
-Restaurant::Restaurant(const Restaurant& restaurant) : nom_(restaurant.nom_), chiffreAffaire_(restaurant.chiffreAffaire_), momentJournee_(restaurant.momentJournee_), menuMatin_(restaurant.menuMatin_), menuMidi_(restaurant.menuMidi_), menuSoir_(restaurant.menuSoir_)  {
+Restaurant::Restaurant(const Restaurant& restaurant) :chiffreAffaire_(restaurant.chiffreAffaire_), momentJournee_(restaurant.momentJournee_)  {
+	nom_ = new string(*restaurant.nom_);
+	menuMatin_ = new Menu(*restaurant.menuMatin_),
+	menuMidi_ = new Menu(*restaurant.menuMidi_),
+	menuSoir_ = new Menu(*restaurant.menuSoir_);
+	
+
 	for (int i = 0; i < restaurant.tables_.size(); i++) {
-		tables_.push_back(restaurant.tables_[i]);
+		tables_.push_back(new Table(*restaurant.tables_[i]));
+	
 	}
 	
 }
@@ -54,8 +55,9 @@ Restaurant::~Restaurant() {
 	delete menuMidi_;
 	delete menuSoir_;
 
-	//A MODIFIER
-	
+	for (int i = 0; i < tables_.size(); i++) {	
+		delete tables_[i];
+	}
 }
 
 
@@ -83,15 +85,22 @@ Restaurant & Restaurant::operator+=( Table * table)
 	return *this;
 }
 
-Restaurant & Restaurant::operator=(const Restaurant & resto)
+Restaurant & Restaurant::operator=(const Restaurant & restaurant)
 {
-	nom_ = resto.nom_;
-	chiffreAffaire_ = resto.chiffreAffaire_;
-	momentJournee_ = resto.momentJournee_;
-	menuMatin_ = resto.menuMatin_;
-	menuMidi_ = resto.menuMidi_;
-	menuSoir_ = resto.menuSoir_;
-	tables_ = resto.tables_;
+	chiffreAffaire_ = restaurant.chiffreAffaire_;
+	momentJournee_ = restaurant.momentJournee_;
+	nom_ = new string(*restaurant.nom_);
+	menuMatin_ = new Menu(*restaurant.menuMatin_),
+	menuMidi_ = new Menu(*restaurant.menuMidi_),
+	menuSoir_ = new Menu(*restaurant.menuSoir_);
+
+
+	for (int i = 0; i < restaurant.tables_.size(); i++) {
+		tables_.push_back(new Table(*restaurant.tables_[i]));
+
+	}
+
+	
 	return *this;
 }
 
@@ -113,7 +122,7 @@ void Restaurant::libererTable(int id) {
 
 ostream & operator<<(ostream & fichier, const Restaurant & restaurant)
 {
-	fichier << "Le restaurant " << restaurant.nom_;
+	fichier << "Le restaurant " << *restaurant.nom_;
 	if (restaurant.chiffreAffaire_ != 0)
 		fichier << " a fait un chiffre d'affaire de : " << restaurant.chiffreAffaire_ << "$" << endl;
 	else
@@ -121,7 +130,8 @@ ostream & operator<<(ostream & fichier, const Restaurant & restaurant)
 	fichier << "-Voici les tables : " << endl;
 	for (int i = 0; i <restaurant.tables_.size(); i++) {
 		fichier << "\t";
-		fichier << restaurant.tables_[i];
+
+		fichier << *restaurant.tables_[i];
 		fichier << endl;
 	}
 	fichier << endl;
@@ -129,11 +139,11 @@ ostream & operator<<(ostream & fichier, const Restaurant & restaurant)
 
 	fichier << "-Voici son menu : " << endl;
 	fichier << "Matin : " << endl;
-	fichier << restaurant.menuMatin_;
+	fichier << *restaurant.menuMatin_;
 	fichier << "Midi : " << endl;
-	fichier << restaurant.menuMidi_;
+	fichier << *restaurant.menuMidi_;
 	fichier << "Soir : " << endl;
-	fichier << restaurant.menuSoir_;
+	fichier << *restaurant.menuSoir_;
 
 	return fichier;
 }

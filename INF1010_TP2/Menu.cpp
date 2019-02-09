@@ -9,15 +9,16 @@
 //constructeurs
 
 Menu::Menu() {
-	vector <Plat*> listePlats_(0);
-	//capacite_ = MAXPLAT;
-	//nbPlats_ = 0;
+	
+
+	
 	type_ = Matin;
 }
 
 Menu::Menu(string fichier, TypeMenu type) {
 	//capacite_ = MAXPLAT;
-	vector <Plat*> listePlats_(0);
+	
+
 	//nbPlats_ = 0;
 	type_ = type;
 
@@ -25,14 +26,18 @@ Menu::Menu(string fichier, TypeMenu type) {
 	lireMenu(fichier);
 }
 //constructeur de copie
+
 Menu::Menu(const Menu& menu) : type_(menu.type_) {
 	for (int i = 0; i < menu.listePlats_.size(); i++) {
-		listePlats_.push_back(menu.listePlats_[i]);
+		listePlats_.push_back(new Plat(*menu.listePlats_[i]));
 	}
 }
 
 //destructeur
 Menu::~Menu() {
+	for (int i = 0; i < listePlats_.size(); i++) {
+		delete listePlats_[i];
+	}
 }
 
 //getters
@@ -57,23 +62,21 @@ ostream & operator<<(ostream & fichier, const Menu& menu)
 {
 	for (int i = 0; i < menu.listePlats_.size(); i++) {
 		
-		return fichier << menu.listePlats_[i];
+	 fichier << *menu.listePlats_[i];
 
 	}
+	return fichier;
 	
 }
 
 Menu& Menu :: operator = (const Menu& menu) {
-	listePlats_ = menu.listePlats_;
+	for (int i = 0; i < menu.listePlats_.size(); i++) {
+		listePlats_.push_back(new Plat(*menu.listePlats_[i]));
+	}
 	type_ = menu.type_;
 	return *this;
 }
-/*
-void Menu::ajouterPlat(const Plat &  plat) {
-	// A MODIFIER
-	listePlats_ += plat;
-}
-*/
+
 
 bool Menu::lireMenu(const string& fichier) {
 	ifstream file(fichier, ios::in);

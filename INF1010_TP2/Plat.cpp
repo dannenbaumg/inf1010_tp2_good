@@ -46,7 +46,8 @@ void Plat::setPrix(double prix) {
 
 ostream & operator<<(ostream & fichier, const Plat & plat)
 {
-	return fichier << plat.nom_ << " - " << plat.prix_ << " $ (" << plat.cout_ << "$ pour le restaurant)" << endl;
+	fichier << plat.nom_ << " - " << plat.prix_ << " $ (" << plat.cout_ << "$ pour le restaurant)" << endl;
+	return fichier;
 }
 
 
