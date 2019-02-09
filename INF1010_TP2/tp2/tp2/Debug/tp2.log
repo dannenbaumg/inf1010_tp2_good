@@ -1,13 +1,2 @@
 ﻿  main.cpp
-  Restaurant.cpp
-y:\documents\inf1010\inf1010_tp2_good\inf1010_tp2\restaurant.cpp(44): warning C4018: '<' : incompatibilité signed/unsigned
-y:\documents\inf1010\inf1010_tp2_good\inf1010_tp2\restaurant.cpp(58): warning C4018: '<' : incompatibilité signed/unsigned
-y:\documents\inf1010\inf1010_tp2_good\inf1010_tp2\restaurant.cpp(98): warning C4018: '<' : incompatibilité signed/unsigned
-y:\documents\inf1010\inf1010_tp2_good\inf1010_tp2\restaurant.cpp(115): warning C4018: '<' : incompatibilité signed/unsigned
-y:\documents\inf1010\inf1010_tp2_good\inf1010_tp2\restaurant.cpp(131): warning C4018: '<' : incompatibilité signed/unsigned
-y:\documents\inf1010\inf1010_tp2_good\inf1010_tp2\restaurant.cpp(156): warning C4018: '<' : incompatibilité signed/unsigned
-y:\documents\inf1010\inf1010_tp2_good\inf1010_tp2\restaurant.cpp(228): warning C4018: '<' : incompatibilité signed/unsigned
-  Table.cpp
-y:\documents\inf1010\inf1010_tp2_good\inf1010_tp2\table.cpp(28): warning C4018: '<' : incompatibilité signed/unsigned
-  Génération de code en cours...
-  tp2.vcxproj -> Y:\Documents\INF1010\inf1010_tp2_good\INF1010_TP2\tp2\Debug\tp2.exe
+  tp2.vcxproj -> C:\Users\danne\Documents\School\H2019\INF1010\inf1010_tp2_good\INF1010_TP2\tp2\Debug\tp2.exe

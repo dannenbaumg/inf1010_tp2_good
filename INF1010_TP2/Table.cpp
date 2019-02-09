@@ -62,10 +62,8 @@ void Table::setId(int id) {
 void Table::libererTable() {
 	nbPlaces_ += nbClientsATable_;
 	nbClientsATable_ = 0;
-	for (unsigned int i = 0; i < commande_.size(); i++) {
-		delete commande_.back();
-		commande_.pop_back();
-	}
+	
+	commande_.clear();
 	
 }
 
