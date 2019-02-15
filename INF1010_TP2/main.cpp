@@ -1,7 +1,7 @@
 /*
-* Titre : main.cpp - Travail Pratique #1
-* Date : 18 Janvier 2019 
-* Auteur : Allan BEDDOUK
+* Titre : main.cpp - Travail Pratique #2
+* Date : 10 Fevrier 2019 
+* Auteurs : Gabriel Dannenbaum Lucas Tassaux
 */
 
 #include "Restaurant.h"
@@ -13,7 +13,7 @@ int main() {
 	//creation du restaurant 
 	Restaurant poly("polyFood.txt", "PolyFood", Soir); 
 
-	///creer plusieurs clients 
+	//creer plusieurs clients 
 	int nbclient1 = 1; 
 	int nbclient2 = 5; 
 	int nbclient3 = 15; 
@@ -60,7 +60,7 @@ int main() {
 
 	// Le restaurant Poly2 ne doit pas encore avoir liberer ses tables
 	cout << poly2;
-
+	// Copie du restaurant poly dans poly2
 	poly2 = poly;
 	
 

@@ -1,7 +1,7 @@
 /*
 * Titre : Menu.cpp - Travail Pratique #2
-* Date : 18 Janvier 2019
-* Auteur : Allan BEDDOUK
+* Date : 10 Fevrier 2019
+* Auteurs : Gabriel Dannenbaum Lucas Tassaux
 */
 
 #include "Menu.h"
@@ -16,17 +16,13 @@ Menu::Menu() {
 }
 
 Menu::Menu(string fichier, TypeMenu type) {
-	//capacite_ = MAXPLAT;
-	
-
-	//nbPlats_ = 0;
 	type_ = type;
 
 	//lecture du fichier -- creation du menu
 	lireMenu(fichier);
 }
-//constructeur de copie
 
+//constructeur de copie
 Menu::Menu(const Menu& menu) : type_(menu.type_) {
 	for (int i = 0; i < menu.listePlats_.size(); i++) {
 		listePlats_.push_back(new Plat(*menu.listePlats_[i]));
@@ -57,7 +53,7 @@ Menu& Menu::operator+=(const Plat & plat)
 //autres methodes
 
 
-
+//Operateur d'affichage du menu 
 ostream & operator<<(ostream & fichier, const Menu& menu)
 {
 	for (int i = 0; i < menu.listePlats_.size(); i++) {
@@ -68,16 +64,18 @@ ostream & operator<<(ostream & fichier, const Menu& menu)
 	return fichier;
 	
 }
-
+//Operateur de copie d'un menu dans un autre
 Menu& Menu :: operator = (const Menu& menu) {
-	for (int i = 0; i < menu.listePlats_.size(); i++) {
-		listePlats_.push_back(new Plat(*menu.listePlats_[i]));
+	if (this != &menu) {
+		for (int i = 0; i < menu.listePlats_.size(); i++) {
+			listePlats_.push_back(new Plat(*menu.listePlats_[i]));
+		}
+		type_ = menu.type_;
 	}
-	type_ = menu.type_;
 	return *this;
 }
 
-
+// Lecture et creation des menus
 bool Menu::lireMenu(const string& fichier) {
 	ifstream file(fichier, ios::in);
 
@@ -162,7 +160,7 @@ bool Menu::lireMenu(const string& fichier) {
 		return true;
 	}
 }
-
+// Recherche du plat le moins cher d'un menu 
 Plat * Menu::trouverPlatMoinsCher() const
 {
 	Plat minimum(*listePlats_[0]);
@@ -180,7 +178,7 @@ Plat * Menu::trouverPlatMoinsCher() const
 	return listePlats_[found];
 
 }
-
+// recherche d'un plat dans une liste de plats
 Plat* Menu::trouverPlat(const string& nom) const {
 	for (int i = 0; i < listePlats_.size(); i++) {
 		if (listePlats_[i]->getNom() == nom)

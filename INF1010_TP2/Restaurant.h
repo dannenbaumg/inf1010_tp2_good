@@ -1,7 +1,7 @@
 /*
 * Titre : Restaurant.h - Travail Pratique #2
-* Date : 18 Janvier 2019
-* Auteur : Allan BEDDOUK
+* Date : 10 Fevrier 2019
+* Auteurs : Gabriel Dannenbaum Lucas Tassaux
 */
 
 #ifndef RESTAURANT_H
@@ -49,8 +49,6 @@ private:
 	Menu* menuMatin_;
 	Menu* menuMidi_;
 	Menu* menuSoir_;
-
-	// A MODIFIER
 
 	//liste des tables
 	vector <Table*> tables_;

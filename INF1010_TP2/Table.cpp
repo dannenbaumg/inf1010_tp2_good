@@ -1,7 +1,7 @@
 /*
 * Titre : Table.cpp - Travail Pratique #2
-* Date : 18 Janvier 2019
-* Auteur : Allan BEDDOUK
+* Date : 10 Fevrier 2019
+* Auteurs : Gabriel Dannenbaum Lucas Tassaux
 */
 
 #include "Table.h"
@@ -74,12 +74,13 @@ void Table::placerClient(int nbClients) {
 }
 
 //autres methodes
+// ajout d'un plat a une commande
 void Table::commander(Plat* plat) {
 
 	commande_.push_back(new Plat(*plat));
 	
 }
-
+//calcul du chiffre d'affaire sur une table 
 double Table::getChiffreAffaire() const {
 	double chiffre = 0;
 	for (unsigned int i = 0; i < commande_.size(); i++) {

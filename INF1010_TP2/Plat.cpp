@@ -1,7 +1,7 @@
 /*
 * Titre : Plat.cpp - Travail Pratique #2
-* Date : 18 Janvier 2019
-* Auteur : Allan BEDDOUK
+* Date : 10 Fevrier 2019
+* Auteurs : Gabriel Dannenbaum Lucas Tassaux
 */
 
 #include "Plat.h"
@@ -43,14 +43,14 @@ void Plat::setPrix(double prix) {
 
 
 //methodes en plus
-
+// Operateur d'affichage
 ostream & operator<<(ostream & fichier, const Plat & plat)
 {
 	fichier << plat.nom_ << " - " << plat.prix_ << " $ (" << plat.cout_ << "$ pour le restaurant)" << endl;
 	return fichier;
 }
 
-
+// operateur comparant les prix de deux plats 
 bool Plat::operator<(const Plat & plat1)
 {
 	return (prix_ < plat1.prix_ == true);

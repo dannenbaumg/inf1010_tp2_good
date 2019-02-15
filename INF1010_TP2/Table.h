@@ -1,7 +1,7 @@
 /*
 * Titre : Table.h - Travail Pratique #2
-* Date : 18 Janvier 2019
-* Auteur : Allan BEDDOUK
+* Date : 10 Fevrier 2019
+* Auteurs : Gabriel Dannenbaum Lucas Tassaux
 */
 
 #ifndef TABLE_H
@@ -12,35 +12,35 @@
 const  int MAXCAP = 5;
 class Table {
 public:
-	///constructeurs
+	//constructeurs
 	Table();
 	Table(int id, int nbPlaces);
 
-	///destructeur
+	//destructeur
 	~Table();
 
-	///getters
+	//getters
 	int getId() const;
 	int getNbPlaces() const;
 	int getnbClientATable() const;
 	bool estPleine() const;
 	bool estOccupee() const;
 
-	///setters
+	//setters
 	void libererTable(); 
 	void placerClient(int nbClients);
 	void setId(int id);
 
-	///autres methodes
+	//autres methodes
 	void commander(Plat* plat);
 	double getChiffreAffaire() const;
 
-	///affichage
+	//affichage
 	friend ostream& operator<<(ostream& fichier, const Table& table);
 
 
 private :
-	//MODIFIER
+	//liste des plats d'une commande
 	vector <Plat*> commande_;
 	int id_;
 	int nbPlaces_;

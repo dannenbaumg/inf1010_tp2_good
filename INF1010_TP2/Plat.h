@@ -1,7 +1,7 @@
 /*
 * Titre : Plat.h - Travail Pratique #2
-* Date : 18 Janvier 2019
-* Auteur : Allan BEDDOUK
+* Date : 10 Fevrier 2019
+* Auteurs : Gabriel Dannenbaum Lucas Tassaux
 */
 
 #ifndef PLAT_H
@@ -15,20 +15,20 @@ using namespace std;
 
 class Plat {
 public:
-	/// constructeurs
+	// constructeurs
 	Plat();
 	Plat(string nom, double prix, double cout);
 
-	///getters
+	//getters
 	string getNom() const;
 	double getPrix() const;
 	double getCout() const;
 
-	///setters
+	//setters
 	void setNom(string nom);
 	void setPrix(double prix);
 
-	///methodes en plus
+	//methodes en plus
 	friend ostream& operator<<(ostream& fichier, const Plat& plat);
     bool operator < (const Plat& plat1);
 

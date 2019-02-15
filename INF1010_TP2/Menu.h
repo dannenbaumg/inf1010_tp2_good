@@ -1,7 +1,7 @@
 /*
 * Titre : Menu.h - Travail Pratique #2
-* Date : 18 Janvier 2019
-* Auteur : Allan BEDDOUK
+* Date : 10 Fevrier 2019
+* Auteurs : Gabriel Dannenbaum Lucas Tassaux
 */
 
 #ifndef MENU_H
@@ -40,7 +40,7 @@ public:
 	bool lireMenu(const string& fichier);
 
 private :
-
+	//liste des plats d'un menu
 	vector <Plat*> listePlats_;
 	TypeMenu type_;
 

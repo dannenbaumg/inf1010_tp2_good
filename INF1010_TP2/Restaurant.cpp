@@ -1,7 +1,7 @@
 /*
 * Titre : Restaurant.cpp - Travail Pratique #2
-* Date : 18 Janvier 2019
-* Auteur : Allan BEDDOUK
+* Date : 10 Fevrier 2019
+* Auteurs : Gabriel Dannenbaum Lucas Tassaux
 */
 
 #include "Restaurant.h"
@@ -79,38 +79,42 @@ TypeMenu Restaurant::getMoment() const {
 }
 
 //autres methodes
+//ajout d'une table 
 Restaurant & Restaurant::operator+=( Table * table)
 {
 	tables_.push_back(table);
 	return *this;
 }
-
+//copie d'un restaurant dans un autre
 Restaurant & Restaurant::operator=(const Restaurant & restaurant)
 {
-	chiffreAffaire_ = restaurant.chiffreAffaire_;
-	momentJournee_ = restaurant.momentJournee_;
-	nom_ = new string(*restaurant.nom_);
-	menuMatin_ = new Menu(*restaurant.menuMatin_),
-	menuMidi_ = new Menu(*restaurant.menuMidi_),
-	menuSoir_ = new Menu(*restaurant.menuSoir_);
+	
+	if (this != &restaurant) {
+		chiffreAffaire_ = restaurant.chiffreAffaire_;
+		momentJournee_ = restaurant.momentJournee_;
+		nom_ = new string(*restaurant.nom_);
+		menuMatin_ = new Menu(*restaurant.menuMatin_),
+			menuMidi_ = new Menu(*restaurant.menuMidi_),
+			menuSoir_ = new Menu(*restaurant.menuSoir_);
 
 
-	for (int i = 0; i < restaurant.tables_.size(); i++) {
-		tables_.push_back(new Table(*restaurant.tables_[i]));
 
+		for (int i = 0; i < restaurant.tables_.size(); i++) {
+			tables_.push_back(new Table(*restaurant.tables_[i]));
+
+		}
 	}
-
 	
 	return *this;
 }
 
-
+//comparaison des chiffres d'affaire de deux restaurants
 bool Restaurant::operator<(const Restaurant & resto)
 {
 	return (chiffreAffaire_ < resto.chiffreAffaire_ == true);
 
 }
-
+//Liberation d'une table, calcul de son chiffre d'affaire et suppresion de la commande 
 void Restaurant::libererTable(int id) {
 	for (int i = 0; i < tables_.size(); i++) {
 		if (id == tables_[i]->getId()) {
@@ -119,7 +123,7 @@ void Restaurant::libererTable(int id) {
 		}
 	}
 }
-
+//Affichage des informations d'un restaurant
 ostream & operator<<(ostream & fichier, const Restaurant & restaurant)
 {
 	fichier << "Le restaurant " << *restaurant.nom_;
@@ -149,7 +153,7 @@ ostream & operator<<(ostream & fichier, const Restaurant & restaurant)
 }
 
 
-
+// Commande d'un plat en fonction du menu disponible au moment de la journee choisi
 void Restaurant::commanderPlat(const string& nom, int idTable) {
 	Plat* plat = nullptr;
 	int index;
@@ -174,7 +178,7 @@ void Restaurant::commanderPlat(const string& nom, int idTable) {
 	}
 	else cout << "Erreur : table non occupee ou plat introuvable" << endl;
 }
-
+// lecture des tables (id et nombre de places) dans un fichier 
 void Restaurant::lireTable(const string& fichier) {
 	ifstream file(fichier, ios::in);
 
@@ -219,7 +223,7 @@ void Restaurant::lireTable(const string& fichier) {
 
 
 
-
+// recherche d'une table libre ayant assez de place pour un nombre de client donne
 void Restaurant::placerClients(int nbClients) {
 	int indexTable = -1;
 	int minimum = 100;

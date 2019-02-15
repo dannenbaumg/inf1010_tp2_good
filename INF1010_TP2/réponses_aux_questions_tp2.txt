@@ -1,0 +1,12 @@
+﻿réponse aux questions du Tp2 :
+1. Quel est l’utilité de l’opérateur = et du constructeur par copie ? 
+
+L'utilité de l'opérateur = est de mettre un object déja existant égales à un autre objet déja existant.
+
+L'utilité du constructeur par copie est de crée un nouveau objet en créant un copie d'un objet déja existant. 
+
+2. Qu’est-ce qui différencie l’opérateur = du constructeur par copie ?
+
+La différence entre les deux c'est que pour utiliser l'opérateur = il faut que les deux objets existent avant l'utilisation.
+Tandis qu'avec le constructeur par copie, il faut seulement que l'objet passé en parametre soit existant avant d'appeler le constructeur,
+car le deuxième objet et crée dans le constructeur de copie.
